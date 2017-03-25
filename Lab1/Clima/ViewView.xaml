@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Clima.View.ClimaView"
+             BackgroundColor="#82B1FF"
+             Title="Clima">
+    <StackLayout Padding="10" Spacing="10" HorizontalOptions="FillAndExpand">
+        <Entry Text="{Binding Location}">
+            <Entry.Triggers>
+                <DataTrigger TargetType="Entry"
+                             Binding="{Binding UseGPS}"
+                             Value="true">
+                    <Setter Property="IsEnabled" Value="false"/>
+                </DataTrigger>
+            </Entry.Triggers>
+        </Entry>
+
+        <StackLayout Orientation="Horizontal" Spacing="10">
+            <Label Text="Usar GPS" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand"/>
+            <Switch IsToggled="{Binding UseGPS}"/>
+        </StackLayout>
+        
+        <Button Text="Obtener clima" Command="{Binding GetWeatherCommand}"/>
+        <Label Text="{Binding Temp}" FontSize="24"/>
+        <Label Text="{Binding TempF}" FontSize="24"/>
+        <Label Text="{Binding Condition}"/>
+        <Label Text="{Binding MaxTemp}" FontSize="24"/>
+        <Label Text="{Binding MinTemp}" FontSize="24"/>
+        <Label Text="{Binding Pressure}" FontSize="16" HorizontalOptions="FillAndExpand"/>
+        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"/>
+    </StackLayout>
+</ContentPage>
+
+
+
+
+
+
+
+
+
